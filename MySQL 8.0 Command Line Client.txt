@@ -1,0 +1,878 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.39 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use nit;
+Database changed
+mysql> show databes;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databes' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ddlcommand         |
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.05 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select* from emp;
++----+--------+---------+--------+
+| Id | Name   | empcode | salary |
++----+--------+---------+--------+
+| 30 | sharma |      71 |   5000 |
+| 49 | mcgurk |      24 |   6000 |
+| 57 | head   |      45 |   8068 |
++----+--------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select* from customers;
++----+--------+-----+----------+
+| Id | Name   | Age | Address  |
++----+--------+-----+----------+
+| 12 | Sunny  |  85 | delhi    |
+| 15 | bittu  |  66 | hyd      |
+| 19 | rustyn |  68 | warangal |
++----+--------+-----+----------+
+3 rows in set (0.01 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> dalete from student1 where name='gg'
+    -> dalete from student1 where name='gg';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dalete from student1 where name='gg'
+dalete from student1 where name='gg'' at line 1
+mysql> dalete from student1 where name='gg';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dalete from student1 where name='gg'' at line 1
+mysql> dalete from student where name='gg';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dalete from student where name='gg'' at line 1
+mysql> delete from student where name='gg';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> start transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values('prasad',22,'rg',66);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> savepoint kamal;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values('yash',12,'rg',06);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint prakash;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| yash    | 12 | rg      |     6 |
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> rollback to kamal;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> insert into student values('sur',2,'rg',06);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint prakash;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to prakash;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| sur     |  2 | rg      |     6 |
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> dalete from student where name='suresh';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dalete from student where name='suresh'' at line 1
+mysql> delete from student where name='sur';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> rollback to prakash;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select* from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| sur     |  2 | rg      |     6 |
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ddlcommand         |
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| roll_no | int         | NO   | PRI | NULL    |       |
+| marks   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+mysql> alter table student1 add address varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| roll_no | int         | NO   | PRI | NULL    |       |
+| marks   | int         | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student1 drop marks;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| roll_no | int         | NO   | PRI | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table student1 modify  name varchar(22);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(22) | YES  |     | NULL    |       |
+| roll_no | int         | NO   | PRI | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student1 drop PRIMARY KEY;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(22) | YES  |     | NULL    |       |
+| roll_no | int         | NO   |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table student1 add PRIMARY KEY(name);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> rename student1 to std;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student1 to std' at line 1
+mysql> rename  table student1 to std;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into student values('renu',1,'sdp');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student(name,roll_no,address) values('renu',1,'sdp');
+ERROR 1054 (42S22): Unknown column 'roll_no' in 'field list'
+mysql> insert into std(name,roll_no,address) values('renu',1,'sdp');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'std(name,roll_no,address) values('renu',1,'sdp')' at line 1
+mysql>
+mysql> insert into  table std (name,roll_no,address)values('renu',1,'sdp');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table std (name,roll_no,address)values('renu',1,'sdp')' at line 1
+mysql>
+mysql> insert into std values('renu',1,'sdp');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select* from std;
++------+---------+---------+
+| name | roll_no | address |
++------+---------+---------+
+| renu |       1 | sdp     |
++------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> truncate table std;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select* from std;
+Empty set (0.01 sec)
+
+mysql> drop table std;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc std;
+ERROR 1146 (42S02): Table 'nit.std' doesn't exist
+mysql> use primarykey;
+ERROR 1049 (42000): Unknown database 'primarykey'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ddlcommand         |
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use primarykey;
+ERROR 1049 (42000): Unknown database 'primarykey'
+mysql> use primary key;
+ERROR 1049 (42000): Unknown database 'primary'
+mysql>
+mysql>
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc student1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| roll_no | int         | NO   | PRI | NULL    |       |
+| marks   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks intpk_student1 primary key(name,roll_no));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'intpk_student1primary key(name,roll_no))' at line 1
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int, p
+k_student1 primary key(name,roll_no));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary key(name,roll_no))' at line 1
+mysql>
+mysql>
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int, PK_student1 PRIMARY KEY(name,roll_no));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY(name,roll_no))' at line 1
+mysql>
+mysql> ^C
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int, PK_student1 PRIMARY KEY(name,roll_no));^C
+mysql>
+mysql> create table student1(name varchar(20),roll_no int not null PRIMARY KEY, marks int, P
+RIMARY KEY(name, roll_no));
+ERROR 1050 (42S01): Table 'student1' already exists
+mysql> create table student2(name varchar(20),roll_no int not null PRIMARY KEY, marks int, P
+RIMARY KEY(name, roll_no));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql> create table student2(name varchar(20),roll_no int not null PRIMARY KEY, marks int, P
+RIMARY KEY(name, roll_no), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql> use primary key;
+ERROR 1049 (42000): Unknown database 'primary'
+mysql>
+mysql> use primarykey;
+ERROR 1049 (42000): Unknown database 'primarykey'
+mysql>
+mysql>
+mysql> create table student2(name varchar(20) primary key,roll_no int not null PRIMARY KEY,
+marks int, PRIMARY KEY(name, roll_no), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql>
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Id      | int         | NO   | PRI | NULL    |       |
+| Name    | varchar(20) | NO   |     | NULL    |       |
+| empcode | int         | NO   | UNI | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table emp add PRIMARY KEY(name);
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql>
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Id      | int         | NO   | PRI | NULL    |       |
+| Name    | varchar(20) | NO   |     | NULL    |       |
+| empcode | int         | NO   | UNI | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> alter table emp add age int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp add constraint emp primary key (age int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int)' at line 1
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Id      | int         | NO   | PRI | NULL    |       |
+| Name    | varchar(20) | NO   |     | NULL    |       |
+| empcode | int         | NO   | UNI | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table emp add constraint emp primary key (age , Id);
+ERROR 1068 (42000): Multiple primary key defined
+mysql> alter table emp add constraint emp primary key (Id, age);
+ERROR 1068 (42000): Multiple primary key defined
+mysql> alter table emp drop primary key (age , Id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(age , Id)' atline 1
+mysql> alter table emp drop primary key;
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Id      | int         | NO   |     | NULL    |       |
+| Name    | varchar(20) | NO   |     | NULL    |       |
+| empcode | int         | NO   | PRI | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> use emp;
+ERROR 1049 (42000): Unknown database 'emp'
+mysql>
+mysql> create table s1(name varchar(20) primary key,roll_no int not null PRIMARY KEY,
+ marks int, PRIMARY KEY(name, roll_no), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql> create table s1(name varchar(20) primary key,roll_no int not null PRIMARY KEY,
+ marks int, PRIMARY KEY(name), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql> create table s1(name varchar(20) primary key,roll_no int, marks int, PRIMARY K
+EY(name), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql>
+mysql>
+mysql> create table s1(name varchar(20) primary key,roll_no int, marks int, unique(ma
+rks));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> create table s1order(name varchar(20) primary key,roll_no int(foreign key), ma
+rks int, unique(marks));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key), marks int, unique(marks))' at line 1
+mysql> desc s1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | NO   | PRI | NULL    |       |
+| roll_no | int         | YES  |     | NULL    |       |
+| marks   | int         | YES  | UNI | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql>
+mysql> create table s1order(name varchar(20) foreign key,roll_no int(primary key), ma
+rks int, unique(marks));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key,roll_no int(primary key), marks int, unique(marks))' at line 1
+mysql>
+mysql>
+mysql> create table s1order(name varchar(20) foreign key,roll_no int(primary key), ma
+rks int,references s1(name));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key,roll_no int(primary key), marks int,references s1(name))' at line 1
+mysql>
+mysql> create table s1order(name varchar(20) foreign key,roll_no int(primary key), ma
+rks int,references s1(name));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key,roll_no int(primary key), marks int,references s1(name))' at line 1
+mysql>
+mysql>
+mysql> create table s1order(name varchar(20),
+                            roll_no int,
+    -> create table s1order(name varchar(20),
+                            roll_no int,
+                            marks int, PRIMARY KEY(name), add a primary key to the 'name column'  FOREIGN KEY(name) REFERENCES s1(name)  Reference the primary key in 's1'
+);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create table s1order(name varchar(20),                                          ' at line 2
+mysql>
+mysql> create table s1order(name varchar(20),roll_no int,marks int, PRIMARY KEY(name), add a primary key to the 'name column'  FOREIGN KEY(name) REFERENCES s1(name)  Reference the primary key in 's1');ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add a primary key to the 'name column'  FOREIGN KEY(name) REFERENCES s1(name)  R' at line 1
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table s1order(name varchar(20) PRIMARY KEY,roll_no int,marks int, FOREIGN KEY (name) REFERENCES s1(name));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc s1order;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | NO   | PRI | NULL    |       |
+| roll_no | int         | YES  |     | NULL    |       |
+| marks   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table s1(studentname varchar(20) primary key,roll_no int not null PRIMARY KEY, marks int, PRIMARY KEY(name), unique(marks));ERROR 1050 (42S01): Table 's1' already exists
+mysql> create table s2(studentname varchar(20) primary key,roll_no int not null PRIMA
+RY KEY, marks int, PRIMARY KEY(name), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql>
+mysql>
+mysql> create table s2(studentname varchar(20),roll_no int not null PRIMARY KEY, mark
+s int, PRIMARY KEY(name), unique(marks));
+ERROR 1068 (42000): Multiple primary key defined
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table personorder1(oid int, ono int,ope int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc personorder;
+ERROR 1146 (42S02): Table 'nit.personorder' doesn't exist
+mysql> desc personorder1;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table personalorder(oid int, ono int,ope int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc personalorder1;
+ERROR 1146 (42S02): Table 'nit.personalorder1' doesn't exist
+mysql> desc personalorder;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>
+mysql> alter table personorder1 add age int;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0mysql> desc personalorder1;
+ERROR 1146 (42S02): Table 'nit.personalorder1' doesn't exist
+mysql> desc personorder1;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
+| age   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table personorder1 drop ope;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table personorder1 drop ono;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc personorder1;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| age   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> desc personalorder;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table personorder1 add address varchar(10);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc personalorder;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | YES  |     | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc personorder1;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| oid     | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| address | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table personorder add primary key oid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table personalorder add primary key (oid int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int)' at line 1
+mysql>
+mysql>
+mysql> alter table personalorder add primarykey (oid int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(oid int)' at line 1
+mysql>
+mysql>
+mysql> alter table personalorder add primarykey oid int;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'oid int' at line 1
+mysql> alter table personorder add primary key oid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql>
+mysql> alter table personalorder add PRIMARY KEY(oid);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0mysql> desc personalorder;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| oid   | int  | NO   | PRI | NULL    |       |
+| ono   | int  | YES  |     | NULL    |       |
+| ope   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> alter table personorder1 add FOREIGN KEY(oid)   refrences personalorder(oid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'refrences personalorder(oid)' at line 1
+mysql>
+mysql>
+mysql> alter table personorder1 add FOREIGN KEY(oid) refrences personalorder(oid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'refrences personalorder(oid)' at line 1
+mysql> select * from student1 cross join emp;
+Empty set (0.00 sec)
+
+mysql> select * from student1 inner  join emp on studen1.id=emp.id;
+ERROR 1054 (42S22): Unknown column 'studen1.id' in 'on clause'
+mysql>
+mysql>
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Id      | int         | NO   |     | NULL    |       |
+| Name    | varchar(20) | NO   |     | NULL    |       |
+| empcode | int         | NO   | PRI | NULL    |       |
+| salary  | int         | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(30) | YES  |     | NULL    |       |
+| id      | int         | NO   | PRI | NULL    |       |
+| address | varchar(50) | YES  |     | NULL    |       |
+| marks   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from student inner  join emp on student.Id=emp.Id;
+Empty set (0.00 sec)
+
+mysql> select * from student;
++---------+----+---------+-------+
+| name    | id | address | marks |
++---------+----+---------+-------+
+| sur     |  2 | rg      |     6 |
+| gg      | 13 | hyd     |    28 |
+| bunny   | 19 | sdpt    |    66 |
+| prasad  | 22 | rg      |    66 |
+| goutham | 33 | hyd     |    48 |
+| sun     | 37 | lsg     |    31 |
+| amu     | 77 | sdpt    |    25 |
++---------+----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from student1;
+Empty set (0.00 sec)
+
+mysql> select * from emp;
++----+--------+---------+--------+------+
+| Id | Name   | empcode | salary | age  |
++----+--------+---------+--------+------+
+| 49 | mcgurk |      24 |   6000 | NULL |
+| 57 | head   |      45 |   8068 | NULL |
+| 30 | sharma |      71 |   5000 | NULL |
++----+--------+---------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers;
++----+--------+-----+----------+
+| Id | Name   | Age | Address  |
++----+--------+-----+----------+
+| 12 | Sunny  |  85 | delhi    |
+| 15 | bittu  |  66 | hyd      |
+| 19 | rustyn |  68 | warangal |
++----+--------+-----+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student left  join emp on student.Id=emp.Id;
++---------+----+---------+-------+------+------+---------+--------+------+
+| name    | id | address | marks | Id   | Name | empcode | salary | age  |
++---------+----+---------+-------+------+------+---------+--------+------+
+| sur     |  2 | rg      |     6 | NULL | NULL |    NULL |   NULL | NULL |
+| gg      | 13 | hyd     |    28 | NULL | NULL |    NULL |   NULL | NULL |
+| bunny   | 19 | sdpt    |    66 | NULL | NULL |    NULL |   NULL | NULL |
+| prasad  | 22 | rg      |    66 | NULL | NULL |    NULL |   NULL | NULL |
+| goutham | 33 | hyd     |    48 | NULL | NULL |    NULL |   NULL | NULL |
+| sun     | 37 | lsg     |    31 | NULL | NULL |    NULL |   NULL | NULL |
+| amu     | 77 | sdpt    |    25 | NULL | NULL |    NULL |   NULL | NULL |
++---------+----+---------+-------+------+------+---------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> select * from student right  join emp on student.Id=emp.Id;
++------+------+---------+-------+----+--------+---------+--------+------+
+| name | id   | address | marks | Id | Name   | empcode | salary | age  |
++------+------+---------+-------+----+--------+---------+--------+------+
+| NULL | NULL | NULL    |  NULL | 49 | mcgurk |      24 |   6000 | NULL |
+| NULL | NULL | NULL    |  NULL | 57 | head   |      45 |   8068 | NULL |
+| NULL | NULL | NULL    |  NULL | 30 | sharma |      71 |   5000 | NULL |
++------+------+---------+-------+----+--------+---------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from student cross  join emp on student.Id=emp.Id;
+Empty set (0.00 sec)
+
+mysql> select * from student cross  join emp on customers.Id=emp.Id;
+ERROR 1054 (42S22): Unknown column 'customers.Id' in 'on clause'
+mysql> select * from student cross  join emp on customers.Id=emp.name;
+ERROR 1054 (42S22): Unknown column 'customers.Id' in 'on clause'
+mysql> select * from customers cross  join emp on customers.Id=emp.name;
+Empty set (0.00 sec)
+
+mysql> select * from customers cross join student on customers.Id=student.name;
+Empty set, 6 warnings (0.01 sec)
+
+mysql> select * from customers cross join student on customers.name=student.name;
+Empty set (0.00 sec)
+
+mysql> select * from student cross join s1;
+Empty set (0.00 sec)
+mysql> select * from student cross join emp;
++---------+----+---------+-------+----+--------+---------+--------+------+
+| name    | id | address | marks | Id | Name   | empcode | salary | age  |
++---------+----+---------+-------+----+--------+---------+--------+------+
+| sur     |  2 | rg      |     6 | 30 | sharma |      71 |   5000 | NULL |
+| sur     |  2 | rg      |     6 | 57 | head   |      45 |   8068 | NULL |
+| sur     |  2 | rg      |     6 | 49 | mcgurk |      24 |   6000 | NULL |
+| gg      | 13 | hyd     |    28 | 30 | sharma |      71 |   5000 | NULL |
+| gg      | 13 | hyd     |    28 | 57 | head   |      45 |   8068 | NULL |
+| gg      | 13 | hyd     |    28 | 49 | mcgurk |      24 |   6000 | NULL |
+| bunny   | 19 | sdpt    |    66 | 30 | sharma |      71 |   5000 | NULL |
+| bunny   | 19 | sdpt    |    66 | 57 | head   |      45 |   8068 | NULL |
+| bunny   | 19 | sdpt    |    66 | 49 | mcgurk |      24 |   6000 | NULL |
+| prasad  | 22 | rg      |    66 | 30 | sharma |      71 |   5000 | NULL |
+| prasad  | 22 | rg      |    66 | 57 | head   |      45 |   8068 | NULL |
+| prasad  | 22 | rg      |    66 | 49 | mcgurk |      24 |   6000 | NULL |
+| goutham | 33 | hyd     |    48 | 30 | sharma |      71 |   5000 | NULL |
+| goutham | 33 | hyd     |    48 | 57 | head   |      45 |   8068 | NULL |
+| goutham | 33 | hyd     |    48 | 49 | mcgurk |      24 |   6000 | NULL |
+| sun     | 37 | lsg     |    31 | 30 | sharma |      71 |   5000 | NULL |
+| sun     | 37 | lsg     |    31 | 57 | head   |      45 |   8068 | NULL |
+| sun     | 37 | lsg     |    31 | 49 | mcgurk |      24 |   6000 | NULL |
+| amu     | 77 | sdpt    |    25 | 30 | sharma |      71 |   5000 | NULL |
+| amu     | 77 | sdpt    |    25 | 57 | head   |      45 |   8068 | NULL |
+| amu     | 77 | sdpt    |    25 | 49 | mcgurk |      24 |   6000 | NULL |
++---------+----+---------+-------+----+--------+---------+--------+------+
+21 rows in set (0.00 sec)
+
+mysql>
