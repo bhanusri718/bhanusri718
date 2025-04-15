@@ -1,16 +1,19 @@
-## Hi there 👋
+### 👋 Hi there! I'm Bhanusri Byri
 
-<!--
-**bhanusri718/bhanusri718** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+🎓 I'm a Computer Science undergraduate at SRK Degree College (CGPA: 8.27/10) with a passion for Data Science, Machine Learning, and Generative AI.
 
-Here are some ideas to get you started:
+🚀 I love building intelligent systems using Python, LLMs, LangChain, and Neural Networks. I'm always curious about solving real-world problems with data.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🛠️ **Skills:**  
+Python | SQL | Streamlit | Pandas | Scikit-learn | LangChain | LLMs | NLP | Neural Networks | XGBoost
+
+📂 **Notable Projects:**  
+- **LangChain Chatbot**: AI chatbot with real-time monitoring using LangSmith  
+- **Object Identification**: Image classification using ML models  
+- **Bank Risk Analysis**: Risk prediction using decision trees and logistic regression  
+
+📚 Currently learning: Deep Learning with TensorFlow, NLP Specialization by Stanford
+
+📫 Let's connect:  
+[LinkedIn](https://www.linkedin.com/in/bhanusribyri) |
+
